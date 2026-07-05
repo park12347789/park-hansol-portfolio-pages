@@ -145,7 +145,7 @@
       <div class="lg:col-span-8 space-y-10" data-reveal>
         <p class="text-gray-300 text-lg leading-loose">
           지원 방향은 <span class="text-white font-medium">1인 개발 / Unity Gameplay / Enemy AI / 아트 기반 테크니컬 기획</span>입니다.
-          Unity 6 기반 플레이어블 포트폴리오 2종(2D 스텔스 호러, 3D 코리도 디펜스)을 직접 제작하며
+          Unity 6 / Godot 기반 플레이어블 포트폴리오 3종(2D 스텔스 호러, 3D 코리도 디펜스, 개발중인 웹 전투 테스트 필드)을 직접 제작하며
           적 감지·추격, 층별 탈출 흐름, 포탑 오토 타겟팅, 박격포 호출 등 핵심 기능을 구현했습니다.
           배경원화 경험을 바탕으로 분위기·동선·UI 가독성·전투 피드백을 플레이 루프로 전환하는 데 강점이 있습니다.
         </p>
@@ -186,6 +186,7 @@
             <span class="tag">uGUI / TextMesh Pro</span>
             <span class="tag">Git / GitHub</span>
             <span class="tag">Unity Version Control</span>
+            <span class="tag">Godot Web Export</span>
             <span class="tag">Photoshop / 배경원화</span>
           </div>
         </div>
@@ -200,9 +201,9 @@
     <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
       <span class="section-eyebrow justify-center">Game Development</span>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3">
-        Unity 6 플레이어블 포트폴리오
+        플레이어블 게임 포트폴리오
       </h2>
-      <p class="text-gray-400 mt-4">기획부터 gameplay/client 구현, 씬·프리팹 연결, UI, 검증, 문서화까지 1인으로 진행한 두 프로젝트입니다.</p>
+      <p class="text-gray-400 mt-4">기획부터 gameplay/client 구현, 씬·프리팹 연결, UI, 검증, 문서화까지 1인으로 진행한 프로젝트입니다.</p>
     </div>
 
     <!-- Project 1: horrorescape / HorrorStealth -->
@@ -290,6 +291,46 @@
           </a>
           <a href="https://docs.google.com/presentation/d/1579NT0hhQuaNCDzXyZhSzl37Eex6q3nc/edit" target="_blank" rel="noopener" class="project-link">
             <i class="fa-solid fa-file-powerpoint"></i> Presentation
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3: Star Vanguard -->
+    <article class="project-card mt-10" data-reveal>
+      <div class="project-media">
+        <img src="images/portfolio/star-vanguard-map1-cover.png" alt="Star Vanguard Map 1 playtest cover" loading="lazy">
+        <div class="project-media-overlay"></div>
+        <span class="project-tag-float">Godot · Web Playtest · 개발중</span>
+      </div>
+      <div class="project-body">
+        <h3 class="font-display font-bold text-2xl text-white mb-2">Star Vanguard / Map 1 Playtest Field <span class="text-sm text-amber align-middle">개발중</span></h3>
+        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+          Godot 기반 우주 전투 플레이 테스트 필드입니다. 현재 개발중인 버전으로, Map 1에서 <span class="text-white">5회 출격 루프,
+          2/4번째 중간 보스, 최종 지휘함 전투</span>까지 이어지는 전투 흐름을 웹에서 바로 확인할 수 있게 구성했습니다.
+        </p>
+
+        <dl class="space-y-3 mb-5 text-sm">
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">1인 개발 (전투 루프, 맵 선택 흐름, 무기/보상 진행, 웹 export, 포트폴리오 배포)</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">핵심기능</dt><dd class="text-gray-400">Map 1 출격 루프, 적 웨이브 압박, 무기 성장, 중간 보스 이벤트, 최종 보스 진입 구조</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">문제→판단</dt><dd class="text-gray-400">개발중 프로젝트라도 설명보다 직접 플레이 가능한 증거가 중요함 → Web 빌드로 배포하고 공개 링크를 프로젝트 카드에 연결</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">근거</dt><dd class="text-gray-400">Godot Web export 산출물, MapSelect/Main 흐름 스모크, MVP12/13 전투 검증 스크립트 기반 작업 기록</dd></div>
+        </dl>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag-sm">Godot</span>
+          <span class="tag-sm">개발중</span>
+          <span class="tag-sm">Web Playtest</span>
+          <span class="tag-sm">Map 1 Sortie Loop</span>
+          <span class="tag-sm">Weapon Progression</span>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/park12347789/starbagurd-3/tree/codex/mvp13-foundation" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="playtests/star-vanguard-map1/" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-gamepad"></i> Web Playtest
           </a>
         </div>
       </div>
@@ -447,7 +488,7 @@
     </p>
 
     <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
-      <a href="https://mighty-triangle-fae.notion.site/1-Unity-Gameplay-944b95131086836993ff016b8f7fdc50" target="_blank" rel="noopener" class="contact-btn contact-btn-primary">
+      <a href="https://app.notion.com/p/1-Unity-Gameplay-944b95131086836993ff016b8f7fdc50" target="_blank" rel="noopener" class="contact-btn contact-btn-primary">
         <i class="fa-solid fa-file-lines"></i> Notion 이력서 보기
       </a>
       <a href="https://github.com/park12347789" target="_blank" rel="noopener" class="contact-btn">
