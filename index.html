@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>박한솔 | HANSOL PARK — 1인 개발자 · Unity Gameplay · Illustrator</title>
+<meta name="description" content="배경원화 경험을 바탕으로 Unity 기반 플레이어블 프로토타입을 직접 제작하는 1인 개발자 박한솔(HANSOL PARK)의 포트폴리오입니다.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0a0a0d',
+          surface: '#131318',
+          surface2: '#1a1a22',
+          amber: {
+            DEFAULT: '#f0a63c',
+            light: '#f8c876'
+          },
+          teal: {
+            DEFAULT: '#3fd6c5'
+          }
+        },
+        fontFamily: {
+          sans: ['Noto Sans KR', 'sans-serif'],
+          display: ['Space Grotesk', 'Noto Sans KR', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-bg text-gray-200 font-sans antialiased">
+
+<!-- Noise overlay -->
+<div class="noise-overlay"></div>
+
+<!-- ===================== HEADER / NAV ===================== -->
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-4">
+    <a href="#hero" class="font-display font-bold text-lg tracking-wide text-white">
+      HANSOL<span class="text-amber">.</span>PARK
+    </a>
+    <button id="nav-toggle" class="lg:hidden text-white text-2xl" aria-label="메뉴 열기">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <ul id="nav-menu" class="hidden lg:flex items-center gap-8 text-sm font-medium tracking-wide">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#games" class="nav-link">Game Dev</a></li>
+      <li><a href="#illustration" class="nav-link">Illustration</a></li>
+      <li><a href="#career" class="nav-link">Career</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li>
+        <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber/60 text-amber hover:bg-amber hover:text-bg transition-colors duration-300">
+          이력서 보기 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Mobile menu -->
+  <ul id="nav-menu-mobile" class="lg:hidden hidden flex-col gap-1 bg-surface/95 backdrop-blur border-t border-white/5 px-6 py-4 text-sm">
+    <li><a href="#about" class="block py-3 nav-link">About</a></li>
+    <li><a href="#games" class="block py-3 nav-link">Game Dev</a></li>
+    <li><a href="#illustration" class="block py-3 nav-link">Illustration</a></li>
+    <li><a href="#career" class="block py-3 nav-link">Career</a></li>
+    <li><a href="#contact" class="block py-3 nav-link">Contact</a></li>
+  </ul>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+  <div class="hero-bg absolute inset-0"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/70 to-bg"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center" data-reveal>
+    <p class="inline-flex items-center gap-2 text-teal text-xs sm:text-sm tracking-[0.3em] uppercase mb-6 font-medium">
+      <span class="w-8 h-px bg-teal"></span> Solo Indie Developer / Illustrator <span class="w-8 h-px bg-teal"></span>
+    </p>
+    <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-white leading-tight mb-6">
+      빛과 어둠 사이에서<br class="hidden sm:block">
+      플레이를 <span class="text-amber">설계</span>합니다
+    </h1>
+    <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg leading-relaxed mb-10">
+      배경원화와 게임 기획 경험을 바탕으로, Unity 기반 플레이어블 프로토타입을 직접 제작하는
+      1인 개발자 <span class="text-white font-medium">박한솔(HANSOL PARK)</span>입니다.
+      화면 분위기와 플레이 가독성을 먼저 설계하고, 씬 구성·UI 흐름·적 AI·전투 시스템까지 이어 붙입니다.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="#games" class="px-7 py-3.5 rounded-full bg-amber text-bg font-semibold text-sm hover:bg-amber-light transition-colors duration-300 shadow-lg shadow-amber/20">
+        게임 프로젝트 보기
+      </a>
+      <a href="#illustration" class="px-7 py-3.5 rounded-full border border-white/20 text-white font-semibold text-sm hover:border-teal hover:text-teal transition-colors duration-300">
+        일러스트 갤러리
+      </a>
+    </div>
+
+    <div class="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-gray-500 text-xs tracking-wide uppercase">
+      <span>Unity 6 · URP</span>
+      <span class="hidden sm:inline">·</span>
+      <span>C# Gameplay Programming</span>
+      <span class="hidden sm:inline">·</span>
+      <span>Background Concept Art</span>
+      <span class="hidden sm:inline">·</span>
+      <span>Enemy AI</span>
+    </div>
+  </div>
+
+  <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-amber transition-colors animate-bounce-slow">
+    <i class="fa-solid fa-chevron-down"></i>
+  </a>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="py-28 lg:py-36 relative border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-14 items-start">
+
+      <div class="lg:col-span-4" data-reveal>
+        <span class="section-eyebrow">About Me</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3 mb-8">
+          아트 감각으로<br>게임을 설계하는 개발자
+        </h2>
+        <div class="relative w-48 h-48 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+          <img src="images/portfolio/avatar.jpg" alt="박한솔 프로필 이미지" class="w-full h-full object-cover">
+        </div>
+        <p class="mt-6 text-sm text-gray-500 leading-relaxed">
+          <i class="fa-solid fa-location-dot text-amber mr-2"></i>광명시, South Korea<br>
+          <i class="fa-solid fa-graduation-cap text-amber mr-2"></i>남서울대학교 환경조형학과 (가상증강현실)
+        </p>
+      </div>
+
+      <div class="lg:col-span-8 space-y-10" data-reveal>
+        <p class="text-gray-300 text-lg leading-loose">
+          지원 방향은 <span class="text-white font-medium">1인 개발 / Unity Gameplay / Enemy AI / 아트 기반 테크니컬 기획</span>입니다.
+          Unity 6 기반 플레이어블 포트폴리오 2종(2D 스텔스 호러, 3D 코리도 디펜스)을 직접 제작하며
+          적 감지·추격, 층별 탈출 흐름, 포탑 오토 타겟팅, 박격포 호출 등 핵심 기능을 구현했습니다.
+          배경원화 경험을 바탕으로 분위기·동선·UI 가독성·전투 피드백을 플레이 루프로 전환하는 데 강점이 있습니다.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="feature-card">
+            <i class="fa-solid fa-code feature-icon"></i>
+            <h3 class="font-semibold text-white mb-1">Scene / Prefab 중심 개발</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">ScriptableObject, Inspector 참조, 씬 배치, 프리팹 계약을 함께 관리합니다.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-palette feature-icon"></i>
+            <h3 class="font-semibold text-white mb-1">아트 + 기획 + 구현 연결</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">배경원화 경험을 바탕으로 분위기, 동선, UI 가독성, 전투 피드백을 설계합니다.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-user-ninja feature-icon"></i>
+            <h3 class="font-semibold text-white mb-1">Enemy AI / 전투 흐름</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">순찰, 감지, 추격, 스폰, 경로, 오토 타겟팅, 호출형 공격 기능을 직접 구성합니다.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-clipboard-check feature-icon"></i>
+            <h3 class="font-semibold text-white mb-1">검증 가능한 작업 기록</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">GitHub, Unity Version Control, 작업 로그, validator, PlayMode 확인 기록을 보유하고 있습니다.</p>
+          </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div>
+          <h3 class="text-xs tracking-[0.2em] uppercase text-gray-500 mb-4">Tech Stack</h3>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="tag">Unity 6 / URP / URP 2D</span>
+            <span class="tag">C#</span>
+            <span class="tag">Input System</span>
+            <span class="tag">ScriptableObject</span>
+            <span class="tag">AI Navigation</span>
+            <span class="tag">Unity Behavior</span>
+            <span class="tag">uGUI / TextMesh Pro</span>
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Unity Version Control</span>
+            <span class="tag">Photoshop / 배경원화</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GAME PROJECTS ===================== -->
+<section id="games" class="py-28 lg:py-36 relative border-t border-white/5 bg-surface/40">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+      <span class="section-eyebrow justify-center">Game Development</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3">
+        Unity 6 플레이어블 포트폴리오
+      </h2>
+      <p class="text-gray-400 mt-4">기획부터 gameplay/client 구현, 씬·프리팹 연결, UI, 검증, 문서화까지 1인으로 진행한 두 프로젝트입니다.</p>
+    </div>
+
+    <!-- Project 1: horrorescape / HorrorStealth -->
+    <article class="project-card mb-10" data-reveal>
+      <div class="project-media">
+        <img src="images/portfolio/horrorstealth-cover.png" alt="horrorescape HorrorStealth cover" loading="lazy">
+        <div class="project-media-overlay"></div>
+        <span class="project-tag-float">2D · Stealth Horror</span>
+      </div>
+      <div class="project-body">
+        <h3 class="font-display font-bold text-2xl text-white mb-2">horrorescape / HorrorStealth</h3>
+        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+          Unity 6 URP 2D 기반 탑다운 스텔스 호러 프로토타입. "안 보여서 답답한 어둠"이 아니라
+          플레이어가 <span class="text-white">빛과 소리로 위험을 읽고 판단</span>하게 만드는 것이 목표였습니다.
+        </p>
+
+        <dl class="space-y-3 mb-5 text-sm">
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">1인 개발 (기획, gameplay/client 구현, 적 AI 흐름, 씬/프리팹 구성, UI, 문서화, 빌드 패키징)</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">핵심기능</dt><dd class="text-gray-400">5F→1F 층별 탈출 흐름, 적 순찰/탐색/추격 및 시야·소음 반응, 인벤토리/퀵슬롯/손전등·배터리 흐름</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">문제→판단</dt><dd class="text-gray-400">어둠·적 시야·소음 반응이 불명확하면 공포가 아닌 억울함이 됨 → 손전등, 로컬 조명, 포그오브워, 적 시야, 소음 반응을 분리해 피드백 조절</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">근거</dt><dd class="text-gray-400">C# 385개, 씬 8개, 문서 45개, 테스트/검증 스크립트 90개, EditMode 108/108 통과 기록</dd></div>
+        </dl>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag-sm">Unity 6 URP 2D</span>
+          <span class="tag-sm">Enemy Perception/Chase</span>
+          <span class="tag-sm">Inventory System</span>
+          <span class="tag-sm">EditMode Test 108/108</span>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/park12347789/horrorescape" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="https://drive.google.com/file/d/1YfElKT2vWfIfpvKrsT0apSEyDli0FlzX/view" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-circle-play"></i> Gameplay 영상
+          </a>
+          <a href="https://drive.google.com/file/d/1l9Y87HL83ZdSxiUpCX_FdfcjUABYj9h8/view?usp=drivesdk" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-download"></i> Windows 빌드
+          </a>
+          <a href="https://docs.google.com/presentation/d/1qa-PLc1CUWqdpsZsKStaQqg3Q3hVvJfoBjpBPoRS2KM/edit" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-file-powerpoint"></i> Pitch Deck
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 2: Corridor Commander -->
+    <article class="project-card project-card-reverse" data-reveal>
+      <div class="project-media">
+        <img src="images/portfolio/corridor-commander-cover.png" alt="Corridor Commander cover" loading="lazy">
+        <div class="project-media-overlay"></div>
+        <span class="project-tag-float">3D · Corridor Defense</span>
+      </div>
+      <div class="project-body">
+        <h3 class="font-display font-bold text-2xl text-white mb-2">Corridor Commander</h3>
+        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+          Unity 3D 기반 corridor-defense MVP. 설치물, 적 웨이브, 보상, 상점, 문 확장, 정산 UI가
+          <span class="text-white">한 흐름으로 이어져야 플레이가 완성</span>되는 프로젝트였습니다.
+        </p>
+
+        <dl class="space-y-3 mb-5 text-sm">
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">1인 개발 (활성 구현 구간 기준: 기획, gameplay/client 구현, 씬/프리팹 연결, UI, 검증, 문서화)</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">핵심기능</dt><dd class="text-gray-400">포탑 오토 타겟팅, 박격포 호출 기능, Q 버튼 기반 플레이어 조작 체감</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">문제→판단</dt><dd class="text-gray-400">설치 시스템과 웨이브/보상/게이트/UI가 따로 움직이면 진행이 끊김 → BuildableDefinitionSO, IBuildableInstallable, BuildContext로 설치 계약 분리, MainCanvas 중심 UI 흐름 통합</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">근거</dt><dd class="text-gray-400">Unity Version Control changeset 148개 중 본인 계정 115개, Assets/hansol C# 299개, 씬 검증/PlayMode/Console 0 error 기록</dd></div>
+        </dl>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag-sm">Turret Auto Targeting</span>
+          <span class="tag-sm">Wave / Reward / Shop Flow</span>
+          <span class="tag-sm">BuildableDefinitionSO</span>
+          <span class="tag-sm">Unity Version Control</span>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/park12347789/Corridor_Commander" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="https://drive.google.com/file/d/1GyZJLb9kSIVN1iCcQnK5zuSc-nNSLZnu/view" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-circle-play"></i> Gameplay 영상
+          </a>
+          <a href="https://drive.google.com/file/d/1dHVtDKgETCLsThsMmeswfj3E63z64yZ-/view?usp=drivesdk" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-download"></i> Windows 빌드
+          </a>
+          <a href="https://docs.google.com/presentation/d/1579NT0hhQuaNCDzXyZhSzl37Eex6q3nc/edit" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-file-powerpoint"></i> Presentation
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== ILLUSTRATION GALLERY ===================== -->
+<section id="illustration" class="py-28 lg:py-36 relative border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-14" data-reveal>
+      <div>
+        <span class="section-eyebrow">Illustration</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3">배경원화 & 컨셉 아트</h2>
+        <p class="text-gray-400 mt-4 max-w-xl">ArtStation에 게시된 43개의 작품 중 일부입니다. 판타지·SF·현대풍 배경, 소품, UI 아트를 폭넓게 다룹니다.</p>
+      </div>
+      <a href="https://www.artstation.com/clrool" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white text-sm font-medium hover:border-teal hover:text-teal transition-colors duration-300">
+        ArtStation 전체 보기 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+      </a>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="gallery-item col-span-2 row-span-2" data-full="images/portfolio/erugo-tower.jpg" data-title="이루고 메인 타워 (Erugo Main Tower)">
+        <img src="images/portfolio/erugo-tower.jpg" alt="이루고 메인 타워 컨셉 아트" loading="lazy">
+        <figcaption>이루고 메인 타워<span>Erugo Main Tower</span></figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="images/portfolio/iron-vale-passage.jpg" data-title="Iron Vale Passage - Gateway to Ruins">
+        <img src="images/portfolio/iron-vale-passage.jpg" alt="Iron Vale Passage 컨셉 아트" loading="lazy">
+        <figcaption>Iron Vale Passage<span>Gateway to Ruins</span></figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="images/portfolio/great-lake-corridor.jpg" data-title="Great Lake Corridor">
+        <img src="images/portfolio/great-lake-corridor.jpg" alt="Great Lake Corridor 배경원화" loading="lazy">
+        <figcaption>Great Lake Corridor</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="images/portfolio/corridor.jpg" data-title="Corridor">
+        <img src="images/portfolio/corridor.jpg" alt="Corridor 배경원화" loading="lazy">
+        <figcaption>Corridor</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="images/portfolio/city-concept.jpg" data-title="City Concept">
+        <img src="images/portfolio/city-concept.jpg" alt="City Concept 배경원화" loading="lazy">
+        <figcaption>City Concept</figcaption>
+      </figure>
+      <figure class="gallery-item col-span-2" data-full="images/portfolio/erugo-town.jpg" data-title="이루고 타운 (Erugo Town)">
+        <img src="images/portfolio/erugo-town.jpg" alt="이루고 타운 컨셉 아트" loading="lazy">
+        <figcaption>이루고 타운<span>Erugo Town</span></figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="images/portfolio/potion-shop.jpg" data-title="Potion Shop">
+        <img src="images/portfolio/potion-shop.jpg" alt="Potion Shop 배경원화" loading="lazy">
+        <figcaption>Potion Shop</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="images/portfolio/pixel-ui-practice.jpg" data-title="Pixel Art Game UI Practice">
+        <img src="images/portfolio/pixel-ui-practice.jpg" alt="Pixel Art Game UI 연습" loading="lazy">
+        <figcaption>Pixel Art UI Practice</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CAREER TIMELINE ===================== -->
+<section id="career" class="py-28 lg:py-36 relative border-t border-white/5 bg-surface/40">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+      <span class="section-eyebrow justify-center">Career & Education</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3">경력 및 이력</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2025.03 – 2025.12</span>
+        <h3 class="timeline-title">배경원화 · 리듬게임 프로젝트</h3>
+        <ul class="timeline-list">
+          <li>리듬게임 플레이 화면에 들어가는 배경원화 제작 및 수정</li>
+          <li>노트, 판정선, 이펙트와 충돌하지 않도록 배경 명도·채도와 시선 흐름 조정</li>
+          <li>실제 게임 적용 기준에 맞춰 화면 분위기, 레이어, 완성도 유지</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2025.02 – 2025.11</span>
+        <h3 class="timeline-title">VR 대형 월드 제작 참여</h3>
+        <ul class="timeline-list">
+          <li>VR 환경에 들어가는 대형 월드 제작 과정 참여</li>
+          <li>프로그래머와 3D 모델 구현 관점의 피드백을 주고받으며 디자인 수정</li>
+          <li>실제 구현 시 최적화 부담을 줄이고, 전체 아트 톤과 통일성을 유지하는 방향으로 조정</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2024.06 – 2024.10</span>
+        <h3 class="timeline-title">게임 총괄 기획 · 디자인</h3>
+        <ul class="timeline-list">
+          <li>게임 총괄 기획, 게임 디자인, 인테리어 디자인 참여</li>
+          <li>이벤트 굿즈 기획 및 디자인</li>
+          <li>프로젝트 목적에 맞춰 콘셉트, 공간감, 시각 요소 정리</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2023.07 – 2024.06</span>
+        <h3 class="timeline-title">배경원화 · UI/UX · AI 시안 제작</h3>
+        <ul class="timeline-list">
+          <li>배경원화, UI/UX, AI 기반 배경 이미지 시안 제작</li>
+          <li>이벤트 샘플 이미지와 배너 이미지 제작</li>
+          <li>빠른 시안 제작으로 분위기 후보를 넓히고 최종 방향 정리</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2022.07 – 2023.04</span>
+        <h3 class="timeline-title">3D 프랍 · 배경원화 · UI 제작</h3>
+        <ul class="timeline-list">
+          <li>3D 프랍, 배경원화, 아이콘, UI 제작</li>
+          <li>판타지풍 / 현대풍 배경 제작 경험</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2022.07 – 2023.04 (이전)</span>
+        <h3 class="timeline-title">3D 배경 컨셉 · 원화 · 프랍 디자인</h3>
+        <ul class="timeline-list">
+          <li>3D 배경 컨셉, 원화, 프랍 디자인</li>
+          <li>Unity 배치와 홍보팀 지원 업무</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item timeline-item-edu" data-reveal>
+        <span class="timeline-date">2014.03 – 2021.02</span>
+        <h3 class="timeline-title">남서울대학교</h3>
+        <ul class="timeline-list">
+          <li>환경조형학과 / 가상증강현실 · 학점 3.17 / 4.5</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item timeline-item-edu" data-reveal>
+        <span class="timeline-date">2012 – 2014</span>
+        <h3 class="timeline-title">광명고등학교 졸업</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="py-28 lg:py-36 relative border-t border-white/5 overflow-hidden">
+  <div class="hero-bg absolute inset-0 opacity-30"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg/90 to-bg"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center" data-reveal>
+    <span class="section-eyebrow justify-center">Contact</span>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3 mb-6">
+      함께 만들 다음 프로젝트를<br>기다리고 있습니다
+    </h2>
+    <p class="text-gray-400 mb-10 leading-relaxed">
+      1인 개발, Unity Gameplay, Enemy AI, 아트 기반 테크니컬 기획 관련 제안이나 채용 문의는 아래 채널로 편하게 연락 주세요.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+      <a href="https://mighty-triangle-fae.notion.site/1-Unity-Gameplay-944b95131086836993ff016b8f7fdc50" target="_blank" rel="noopener" class="contact-btn contact-btn-primary">
+        <i class="fa-solid fa-file-lines"></i> Notion 이력서 보기
+      </a>
+      <a href="https://github.com/park12347789" target="_blank" rel="noopener" class="contact-btn">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+      <a href="https://www.artstation.com/clrool" target="_blank" rel="noopener" class="contact-btn">
+        <i class="fa-solid fa-palette"></i> ArtStation
+      </a>
+      <a href="mailto:parkhansol011@gmail.com" class="contact-btn">
+        <i class="fa-solid fa-envelope"></i> Email
+      </a>
+    </div>
+
+    <div class="text-sm text-gray-600">
+      <i class="fa-solid fa-location-dot text-amber mr-1"></i> 광명시, South Korea
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div id="lightbox" class="lightbox">
+  <button id="lightbox-close" class="lightbox-close" aria-label="닫기"><i class="fa-solid fa-xmark"></i></button>
+  <figure class="lightbox-content">
+    <img id="lightbox-img" src="" alt="">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-10 border-t border-white/5 text-center">
+  <p class="text-gray-600 text-sm">
+    &copy; <span id="year"></span> HANSOL PARK. Built for portfolio purposes.
+  </p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
