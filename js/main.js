@@ -13,6 +13,16 @@ function updateHeader() {
 window.addEventListener('scroll', updateHeader);
 updateHeader();
 
+// ===================== Image load diagnostics =====================
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', () => {
+    const failedSrc = img.currentSrc || img.getAttribute('src') || '';
+    if (failedSrc) {
+      console.error(`Image failed to load: ${failedSrc}`);
+    }
+  });
+});
+
 // ===================== Mobile nav toggle =====================
 const navToggle = document.getElementById('nav-toggle');
 const navMenuMobile = document.getElementById('nav-menu-mobile');
