@@ -1,3 +1,5 @@
+document.documentElement.classList.add('has-js');
+
 // ===================== Footer Year =====================
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -29,6 +31,7 @@ const navMenuMobile = document.getElementById('nav-menu-mobile');
 navToggle.addEventListener('click', () => {
   navMenuMobile.classList.toggle('hidden');
   navMenuMobile.classList.toggle('flex');
+  navToggle.setAttribute('aria-expanded', String(navMenuMobile.classList.contains('flex')));
 });
 
 // Close mobile menu when a link is clicked
@@ -36,6 +39,7 @@ navMenuMobile.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navMenuMobile.classList.add('hidden');
     navMenuMobile.classList.remove('flex');
+    navToggle.setAttribute('aria-expanded', 'false');
   });
 });
 
