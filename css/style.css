@@ -83,8 +83,8 @@ body {
 }
 
 @keyframes bounce-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
 }
 .animate-bounce-slow {
   animation: bounce-slow 2.2s ease-in-out infinite;
@@ -208,9 +208,11 @@ body {
 }
 
 .project-media {
+  display: block;
   position: relative;
   min-height: 280px;
   overflow: hidden;
+  color: inherit;
 }
 .project-media img {
   width: 100%;
@@ -226,6 +228,38 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(10,10,13,0.05) 30%, rgba(10,10,13,0.76) 100%);
+  pointer-events: none;
+}
+.project-media-action {
+  position: absolute;
+  z-index: 2;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(10, 10, 13, 0.82);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.project-media:hover .project-media-action,
+.project-media:focus-visible .project-media-action {
+  border-color: #f0a63c;
+  color: #f8c876;
+  transform: translateX(-50%) scale(1.04);
+}
+.project-media:focus-visible {
+  outline: 2px solid #f0a63c;
+  outline-offset: -2px;
 }
 .project-tag-float {
   position: absolute;
@@ -254,6 +288,27 @@ body {
   font-weight: 600;
   line-height: 1.65;
 }
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  padding: 0.75rem 0;
+  margin-bottom: 1.1rem;
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+}
+.project-meta li {
+  display: flex;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.project-meta span {
+  color: #777983;
+}
+.project-meta strong {
+  color: #c8c8d0;
+  font-weight: 600;
+}
 @media (min-width: 1024px) {
   .project-body {
     padding: 2.5rem;
@@ -276,6 +331,11 @@ body {
   border-color: #f0a63c;
   color: #f0a63c;
   background: rgba(240, 166, 60, 0.06);
+}
+.project-link-primary {
+  border-color: rgba(240, 166, 60, 0.62);
+  background: rgba(240, 166, 60, 0.1);
+  color: #f8c876;
 }
 
 /* ===================== Gallery ===================== */
