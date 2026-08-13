@@ -245,8 +245,63 @@
       </div>
     </article>
 
-    <!-- Project 3: Star Vanguard -->
-    <article id="star-vanguard" class="project-card mt-10 scroll-mt-24" data-reveal>
+    <!-- Project 3: Last Jump Crew -->
+    <article id="last-jump-crew" class="project-card mt-10 scroll-mt-24" data-reveal>
+      <a href="https://drive.google.com/file/d/1ufzshyKzNC74L2bztAH6-T9frNZpjw-A/view" target="_blank" rel="noopener" class="project-media" aria-label="Last Jump Crew 시연 영상 새 창에서 보기">
+        <img loading="lazy" decoding="async" src="images/portfolio/last-jump-crew-cover.png" alt="Last Jump Crew 단계형 네트워크 튜토리얼 화면">
+        <div class="project-media-overlay"></div>
+        <span class="project-media-action"><i class="fa-solid fa-circle-play"></i> 시연 영상</span>
+        <span class="project-tag-float">Unity 6 · Online Co-op</span>
+      </a>
+      <div class="project-body">
+        <h3 class="font-display font-bold text-2xl text-white mb-2">Last Jump Crew</h3>
+        <p class="project-summary">
+          4인 협동 플레이의 로비, 플레이어 상태, 함선 지도, 이동 도구와 런 흐름을 서버 권위 상태로 연결한 Unity 팀 프로젝트.
+        </p>
+        <ul class="project-meta" aria-label="Last Jump Crew 프로젝트 기본 정보">
+          <li><span>구성</span><strong>5인 팀 · 팀장</strong></li>
+          <li><span>엔진</span><strong>Unity 6</strong></li>
+          <li><span>네트워크</span><strong>Netcode for GameObjects</strong></li>
+          <li><span>상태</span><strong>통합 빌드</strong></li>
+        </ul>
+        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+          박한솔 담당 범위는 팀 기획안이 아닌 개인 결과보고서와 Git 이력으로 확인했습니다.
+          로비 커스터마이징부터 런 중 HUD·함선 지도·그래플·부스터까지
+          <span class="text-white">동일한 서버 권위 상태를 기준으로 이어지게 통합</span>했습니다.
+        </p>
+
+        <dl class="space-y-3 mb-5 text-sm">
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">팀장 · 멀티플레이 시스템 · UI/HUD · 단계형 네트워크 튜토리얼 · 씬/프리팹 통합 · 빌드 검증</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium leading-snug">문제→<br>판단</dt><dd class="text-gray-400">클라이언트 저장값과 입력을 그대로 반영하면 전체 네트워크 상태가 오염됨 → 소유자·카탈로그·슬롯·색상 검증 후 서버 상태 반영</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">구현</dt><dd class="text-gray-400">외형 동기화, 단계형 튜토리얼, 실시간 함선 지도, 그래플·부스터·무중력 이동, 아이템 라이프사이클, 사고·잔해와 워프 런 흐름 연동</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">검증</dt><dd class="text-gray-400">현행 핵심 파일 blame 대부분 본인 작성, main 기준 비-merge 커밋 221개, P0 멀티 런타임 검증 하네스와 당시 PASS 기록</dd></div>
+        </dl>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag-sm">Unity 6</span>
+          <span class="tag-sm">Netcode for GameObjects</span>
+          <span class="tag-sm">Server Authority</span>
+          <span class="tag-sm">Scene / Prefab Integration</span>
+          <span class="tag-sm">Runtime Validation</span>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="https://drive.google.com/file/d/1ufzshyKzNC74L2bztAH6-T9frNZpjw-A/view" target="_blank" rel="noopener" class="project-link project-link-primary">
+            <i class="fa-solid fa-circle-play"></i> 시연 영상
+          </a>
+          <a href="https://github.com/park12347789/LastJumpCrew" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-lock"></i> GitHub 이력
+          </a>
+          <a href="https://docs.google.com/document/d/152Ets7DGVOP3v-psCz1HSkuWXKOWWLm8wOT2yWHbn74" target="_blank" rel="noopener" class="project-link">
+            <i class="fa-solid fa-file-lines"></i> 개인 결과보고서
+          </a>
+        </div>
+        <p class="mt-4 text-xs text-gray-500"><i class="fa-solid fa-lock mr-1 text-teal"></i>팀 저장소 이력은 보존했으며, 소스는 공개 허가 전까지 비공개입니다.</p>
+      </div>
+    </article>
+
+    <!-- Project 4: Star Vanguard -->
+    <article id="star-vanguard" class="project-card project-card-reverse mt-10 scroll-mt-24" data-reveal>
       <a href="playtests/star-vanguard-map1/" target="_blank" rel="noopener" class="project-media" aria-label="Star Vanguard Web Playtest 새 창에서 실행">
         <img loading="lazy" decoding="async" src="images/portfolio/star-vanguard-map1-cover.png" alt="Star Vanguard Map 1 playtest cover">
         <div class="project-media-overlay"></div>
