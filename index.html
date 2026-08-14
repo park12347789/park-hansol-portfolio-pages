@@ -1,628 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>박한솔 | Unity Gameplay / Client Developer — HANSOL PARK</title>
-<meta name="description" content="Unity Gameplay/Client 개발자 박한솔의 포트폴리오. Enemy AI, UI 흐름, 씬·프리팹 통합과 플레이 가능한 게임 프로젝트를 소개합니다.">
-<link rel="icon" href="data:,">
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          bg: '#0a0a0d',
-          surface: '#131318',
-          surface2: '#1a1a22',
-          amber: {
-            DEFAULT: '#f0a63c',
-            light: '#f8c876'
-          },
-          teal: {
-            DEFAULT: '#3fd6c5'
-          }
-        },
-        fontFamily: {
-          sans: ['Noto Sans KR', 'sans-serif'],
-          display: ['Space Grotesk', 'Noto Sans KR', 'sans-serif']
-        }
-      }
-    }
-  }
-</script>
-
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="환경 컨셉아트와 게임 UI로 세계의 분위기와 플레이 가독성을 설계하는 Game Art Designer 박한솔 포트폴리오">
+  <meta name="theme-color" content="#0b0d0c">
+  <title>박한솔 — Game Art Designer / Visual Development</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
-<body class="bg-bg text-gray-200 font-sans antialiased">
+<body>
+  <div class="space-backdrop" aria-hidden="true"></div>
+  <div class="motion-intro" aria-hidden="true">
+    <div class="intro-grid"></div>
+    <div class="intro-panel intro-panel-left"></div>
+    <div class="intro-panel intro-panel-right"></div>
+    <div class="intro-sequence">
+      <span class="intro-kicker">GAME ART / VISUAL DEVELOPMENT</span>
+      <strong class="intro-mark"><span>HANSOL</span><span>PARK</span></strong>
+      <div class="intro-status"><i></i><span>LOADING VISUAL ARCHIVE</span><b>2026</b></div>
+    </div>
+  </div>
+  <div class="pointer-aura" aria-hidden="true"></div>
+  <div class="ambient-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="ambient-scan" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <aside class="chapter-indicator" aria-hidden="true"><span data-chapter-index>01</span><strong data-chapter-label>INTRO</strong></aside>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
 
-<!-- Noise overlay -->
-<div class="noise-overlay"></div>
-
-<!-- ===================== HEADER / NAV ===================== -->
-<header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
-  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-4">
-    <a href="#hero" class="font-display font-bold text-lg tracking-wide text-white">
-      HANSOL<span class="text-amber">.</span>PARK
+  <header class="top-app-bar">
+    <a class="brand" href="#hero" aria-label="박한솔 포트폴리오 홈">
+      <span class="brand-mark" aria-hidden="true">HP</span>
+      <span>HANSOL.PARK</span>
     </a>
-    <button id="nav-toggle" class="lg:hidden text-white text-2xl" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-menu-mobile">
-      <i class="fa-solid fa-bars"></i>
+
+    <button class="motion-toggle" type="button" aria-label="애니메이션 일시정지" aria-pressed="false">FX ON</button>
+
+    <button class="icon-button menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
     </button>
-    <ul id="nav-menu" class="hidden lg:flex items-center gap-8 text-sm font-medium tracking-wide">
-      <li><a href="#games" class="nav-link">Game Dev</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#career" class="nav-link">Career</a></li>
-      <li><a href="#illustration" class="nav-link">Illustration</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-      <li>
-        <a href="https://mighty-triangle-fae.notion.site/1-Unity-Gameplay-944b95131086836993ff016b8f7fdc50" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber/60 text-amber hover:bg-amber hover:text-bg transition-colors duration-300">
-          이력서 보기 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- Mobile menu -->
-  <ul id="nav-menu-mobile" class="lg:hidden hidden flex-col gap-1 bg-surface/95 backdrop-blur border-t border-white/5 px-6 py-4 text-sm">
-    <li><a href="#games" class="block py-3 nav-link">Game Dev</a></li>
-    <li><a href="#about" class="block py-3 nav-link">About</a></li>
-    <li><a href="#career" class="block py-3 nav-link">Career</a></li>
-    <li><a href="#illustration" class="block py-3 nav-link">Illustration</a></li>
-    <li><a href="#contact" class="block py-3 nav-link">Contact</a></li>
-  </ul>
-</header>
 
-<!-- ===================== HERO ===================== -->
-<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-  <div class="hero-bg absolute inset-0"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/70 to-bg"></div>
+    <nav id="primary-nav" class="primary-nav" aria-label="주요 메뉴">
+      <a href="#art">Art</a>
+      <a href="#projects">In-Engine</a>
+      <a href="#proof">Proof</a>
+      <a href="#about">About</a>
+      <a class="nav-cta" href="mailto:parkhansol011@gmail.com">Contact</a>
+    </nav>
+  </header>
 
-  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center" data-reveal>
-    <p class="inline-flex items-center gap-2 text-teal text-[0.65rem] sm:text-sm tracking-[0.16em] sm:tracking-[0.3em] uppercase mb-6 font-medium">
-      <span class="hidden sm:block w-8 h-px bg-teal"></span> Unity Gameplay / Client Developer <span class="hidden sm:block w-8 h-px bg-teal"></span>
-    </p>
-    <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-white leading-tight mb-6">
-      빛과 어둠 사이에서<br class="hidden sm:block">
-      플레이를 <span class="text-amber">설계</span>합니다
-    </h1>
-    <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg leading-relaxed mb-10">
-      배경원화와 게임 기획 경험을 바탕으로, Unity 기반 플레이어블 프로토타입을 제작하는
-      다재다능한 게임 개발자 <span class="text-white font-medium">박한솔(HANSOL PARK)</span>입니다.
-      화면 분위기와 플레이 가독성을 먼저 설계하고, 씬 구성·UI 흐름·적 AI·전투 시스템까지 연결해 구현합니다.
-    </p>
-    <div class="flex flex-wrap items-center justify-center gap-4">
-      <a href="#games" class="px-7 py-3.5 rounded-full bg-amber text-bg font-semibold text-sm hover:bg-amber-light transition-colors duration-300 shadow-lg shadow-amber/20">
-        대표 프로젝트
-      </a>
-      <a href="https://mighty-triangle-fae.notion.site/1-Unity-Gameplay-944b95131086836993ff016b8f7fdc50" target="_blank" rel="noopener" class="px-7 py-3.5 rounded-full border border-white/20 text-white font-semibold text-sm hover:border-teal hover:text-teal transition-colors duration-300">
-        이력서 보기 <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-      </a>
-    </div>
-
-    <div class="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-gray-500 text-xs tracking-wide uppercase">
-      <span>Unity 6</span>
-      <span class="hidden sm:inline">·</span>
-      <span>Gameplay / Client</span>
-      <span class="hidden sm:inline">·</span>
-      <span>Enemy AI</span>
-      <span class="hidden sm:inline">·</span>
-      <span>UI / Scene Integration</span>
-    </div>
-  </div>
-
-  <a href="#games" aria-label="대표 프로젝트로 이동" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-amber transition-colors animate-bounce-slow">
-    <i class="fa-solid fa-chevron-down"></i>
-  </a>
-</section>
-
-<!-- ===================== GAME PROJECTS ===================== -->
-<section id="games" class="py-28 lg:py-36 relative border-t border-white/5 bg-surface/40">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
-      <span class="section-eyebrow justify-center">Game Development</span>
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3">
-        플레이어블 게임 포트폴리오
-      </h2>
-      <p class="text-gray-400 mt-4">기획, Gameplay/Client 구현, 씬·프리팹 연결, UI, 검증, 문서화까지<br class="hidden sm:block">직접 맡아 수행한 범위를 정리했습니다.</p>
-    </div>
-
-    <!-- Project 1: horrorescape / HorrorStealth -->
-    <article id="horrorstealth" class="project-card mb-10 scroll-mt-24" data-reveal>
-      <a href="https://drive.google.com/file/d/1ZJtiHilNekt-S6KDYB1VOtts6FTvDL8l/view" target="_blank" rel="noopener" class="project-media" aria-label="HorrorStealth 게임플레이 영상 새 창에서 보기">
-        <img decoding="async" src="images/portfolio/horrorstealth-cover.png" alt="horrorescape HorrorStealth cover">
-        <div class="project-media-overlay"></div>
-        <span class="project-media-action"><i class="fa-solid fa-circle-play"></i> 게임플레이 영상</span>
-        <span class="project-tag-float">2D · Stealth Horror</span>
-      </a>
-      <div class="project-body">
-        <h3 class="font-display font-bold text-2xl text-white mb-2">horrorescape / HorrorStealth</h3>
-        <p class="project-summary">
-          어둠·소리·시야 정보를 분리해 억울하지 않은 스텔스 호러를 목표로 만든 Unity 2D 프로토타입.
-        </p>
-        <ul class="project-meta" aria-label="HorrorStealth 프로젝트 기본 정보">
-          <li><span>구성</span><strong>1인</strong></li>
-          <li><span>엔진</span><strong>Unity 6 URP 2D</strong></li>
-          <li><span>플랫폼</span><strong>Windows</strong></li>
-          <li><span>상태</span><strong>프로토타입</strong></li>
+  <main id="main">
+    <section id="hero" class="hero section-shell" data-chapter="INTRO" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="system-label"><span>SYS.PORTFOLIO</span><span>STATUS · AVAILABLE</span></p>
+        <p class="eyebrow">GAME ART DESIGNER / VISUAL DEVELOPMENT</p>
+        <h1 id="hero-title"><span class="headline-block light">세계를 그리고</span><span class="headline-block accent">플레이를 설계합니다.</span></h1>
+        <p class="hero-description">환경 컨셉아트와 게임 UI로 세계의 분위기와 정보 흐름을 설계하고, Unity·Godot에서 실제 플레이 화면까지 연결하는 게임 아트 디자이너 박한솔입니다.</p>
+        <div class="hero-actions">
+          <a class="button filled" href="#art">대표 아트 보기</a>
+          <a class="button outlined" href="#projects">플레이 적용 작업</a>
+        </div>
+        <ul class="hero-metrics" aria-label="핵심 역량">
+          <li><strong>Environment</strong><span>Concept · Mood</span></li>
+          <li><strong>Game UI</strong><span>Pixel · Flow</span></li>
+          <li><strong>In-Engine</strong><span>Unity · Godot</span></li>
         </ul>
-        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
-          Unity 6 URP 2D 기반 탑다운 스텔스 호러 프로토타입. "안 보여서 답답한 어둠"이 아니라
-          플레이어가 <span class="text-white">빛과 소리로 위험을 읽고 판단</span>하게 만드는 것이 목표였습니다.
-        </p>
-
-        <dl class="space-y-3 mb-5 text-sm">
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">1인 개발 (기획, Gameplay/Client 구현, 적 AI 흐름, 씬/프리팹 구성, UI, 문서화, 빌드 패키징)</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium leading-snug">문제→<br>판단</dt><dd class="text-gray-400">어둠·적 시야·소음 반응이 불명확하면 공포가 아닌 억울함이 됨 → 손전등, 로컬 조명, 포그오브워, 적 시야, 소음 반응을 분리해 피드백 조절</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">구현</dt><dd class="text-gray-400">5F→1F 층별 탈출, 적 순찰/탐색/추격과 시야·소음 반응, 인벤토리/퀵슬롯/손전등·배터리 흐름</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">검증</dt><dd class="text-gray-400">EditMode 108/108 통과, Build Settings 활성 씬 8개, Windows 빌드·게임플레이 영상 링크 제공</dd></div>
-        </dl>
-
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="tag-sm">Unity 6 URP 2D</span>
-          <span class="tag-sm">Enemy Perception/Chase</span>
-          <span class="tag-sm">Inventory System</span>
-          <span class="tag-sm">EditMode Test 108/108</span>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a href="https://drive.google.com/file/d/1ZJtiHilNekt-S6KDYB1VOtts6FTvDL8l/view" target="_blank" rel="noopener" class="project-link project-link-primary">
-            <i class="fa-solid fa-circle-play"></i> 게임플레이 영상
-          </a>
-          <a href="https://drive.google.com/file/d/1Kx7njybq9UCfTTqO_x_fIGVuRzAKHcn-/view" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-solid fa-download"></i> Windows 빌드
-          </a>
-          <a href="https://github.com/park12347789/horrorescape" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-          <a href="https://docs.google.com/presentation/d/1UunlqNpCoPI4YCp8eF7lswghNuJ99Nvm3Iqqq2YKXq8/present?usp=sharing" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-solid fa-file-powerpoint"></i> Pitch Deck
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 2: Corridor Commander -->
-    <article id="corridor-commander" class="project-card project-card-reverse scroll-mt-24" data-reveal>
-      <a href="https://drive.google.com/file/d/1g5BktS-FwwfMZJzfutQscR3LngQAV8Jb/view" target="_blank" rel="noopener" class="project-media" aria-label="Corridor Commander 게임플레이 영상 새 창에서 보기">
-        <img loading="lazy" decoding="async" src="images/portfolio/corridor-commander-cover.png" alt="Corridor Commander cover">
-        <div class="project-media-overlay"></div>
-        <span class="project-media-action"><i class="fa-solid fa-circle-play"></i> 게임플레이 영상</span>
-        <span class="project-tag-float">3D · Corridor Defense</span>
-      </a>
-      <div class="project-body">
-        <h3 class="font-display font-bold text-2xl text-white mb-2">Corridor Commander</h3>
-        <p class="project-summary">
-          설치물, 웨이브, 보상, 상점, 게이트 확장을 하나의 진행 루프로 연결한 Unity 3D 디펜스 MVP.
-        </p>
-        <ul class="project-meta" aria-label="Corridor Commander 프로젝트 기본 정보">
-          <li><span>구성</span><strong>2인 팀</strong></li>
-          <li><span>엔진</span><strong>Unity 3D</strong></li>
-          <li><span>플랫폼</span><strong>Windows</strong></li>
-          <li><span>상태</span><strong>MVP</strong></li>
-        </ul>
-        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
-          Unity 3D 기반 corridor-defense MVP. 설치물, 적 웨이브, 보상, 상점, 게이트 확장, 정산 UI가
-          <span class="text-white">한 흐름으로 이어져야 플레이가 완성</span>되는 프로젝트였습니다.
-        </p>
-
-        <dl class="space-y-3 mb-5 text-sm">
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">2인 팀 개발 (박한솔: 시스템·맵·설치 흐름 / 한준희: 플레이어·전투·조작)</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium leading-snug">문제→<br>판단</dt><dd class="text-gray-400">설치 시스템과 웨이브/보상/게이트/UI가 따로 움직이면 진행이 끊김 → BuildableDefinitionSO, IBuildableInstallable, BuildContext로 설치 계약 분리, MainCanvas 중심 UI 흐름 통합</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">구현</dt><dd class="text-gray-400">설치·수리, 웨이브·보상·상점 연결, 게이트 확장과 MainCanvas 중심 UI 흐름 통합</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">검증</dt><dd class="text-gray-400">2026-07-18 기준 주요 씬·UI 전환 확인, validator 10종 PASS, Windows 빌드 성공·20초 standalone 스모크 정상</dd></div>
-        </dl>
-
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="tag-sm">Turret Auto Targeting</span>
-          <span class="tag-sm">Wave / Reward / Shop Flow</span>
-          <span class="tag-sm">BuildableDefinitionSO</span>
-          <span class="tag-sm">Unity Version Control</span>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a href="https://drive.google.com/file/d/1g5BktS-FwwfMZJzfutQscR3LngQAV8Jb/view" target="_blank" rel="noopener" class="project-link project-link-primary">
-            <i class="fa-solid fa-circle-play"></i> 게임플레이 영상
-          </a>
-          <a href="https://drive.google.com/file/d/1AUqTabTZ3AjxpxBT4AWD335BV2O82hv0/view" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-solid fa-download"></i> Windows 빌드
-          </a>
-          <a href="https://github.com/park12347789/Corridor_Commander" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-          <a href="https://docs.google.com/presentation/d/1dvoao4x87t9ErjVb-aK40LRw14kaWD7hOIqEFW9yi0c/present?usp=sharing" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-solid fa-file-powerpoint"></i> 발표자료 보기
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 3: Last Jump Crew -->
-    <article id="last-jump-crew" class="project-card mt-10 scroll-mt-24" data-reveal>
-      <a href="https://drive.google.com/file/d/1ufzshyKzNC74L2bztAH6-T9frNZpjw-A/view" target="_blank" rel="noopener" class="project-media" aria-label="Last Jump Crew 시연 영상 새 창에서 보기">
-        <img loading="lazy" decoding="async" src="images/portfolio/last-jump-crew-cover.png" alt="Last Jump Crew 단계형 네트워크 튜토리얼 화면">
-        <div class="project-media-overlay"></div>
-        <span class="project-media-action"><i class="fa-solid fa-circle-play"></i> 시연 영상</span>
-        <span class="project-tag-float">Unity 6 · Online Co-op</span>
-      </a>
-      <div class="project-body">
-        <h3 class="font-display font-bold text-2xl text-white mb-2">Last Jump Crew</h3>
-        <p class="project-summary">
-          4인 협동 플레이의 로비, 플레이어 상태, 함선 지도, 이동 도구와 런 흐름을 서버 권위 상태로 연결한 Unity 팀 프로젝트.
-        </p>
-        <ul class="project-meta" aria-label="Last Jump Crew 프로젝트 기본 정보">
-          <li><span>구성</span><strong>5인 팀 · 팀장</strong></li>
-          <li><span>엔진</span><strong>Unity 6</strong></li>
-          <li><span>네트워크</span><strong>Netcode for GameObjects</strong></li>
-          <li><span>상태</span><strong>통합 빌드</strong></li>
-        </ul>
-        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
-          박한솔 담당 범위는 팀 기획안이 아닌 개인 결과보고서와 Git 이력으로 확인했습니다.
-          로비 커스터마이징부터 런 중 HUD·함선 지도·그래플·부스터까지
-          <span class="text-white">동일한 서버 권위 상태를 기준으로 이어지게 통합</span>했습니다.
-        </p>
-
-        <dl class="space-y-3 mb-5 text-sm">
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">팀장 · 멀티플레이 시스템 · UI/HUD · 단계형 네트워크 튜토리얼 · 씬/프리팹 통합 · 빌드 검증</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium leading-snug">문제→<br>판단</dt><dd class="text-gray-400">클라이언트 저장값과 입력을 그대로 반영하면 전체 네트워크 상태가 오염됨 → 소유자·카탈로그·슬롯·색상 검증 후 서버 상태 반영</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">구현</dt><dd class="text-gray-400">외형 동기화, 단계형 튜토리얼, 실시간 함선 지도, 그래플·부스터·무중력 이동, 아이템 라이프사이클, 사고·잔해와 워프 런 흐름 연동</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">검증</dt><dd class="text-gray-400">현행 핵심 파일 blame 대부분 본인 작성, main 기준 비-merge 커밋 221개, P0 멀티 런타임 검증 하네스와 당시 PASS 기록</dd></div>
-        </dl>
-
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="tag-sm">Unity 6</span>
-          <span class="tag-sm">Netcode for GameObjects</span>
-          <span class="tag-sm">Server Authority</span>
-          <span class="tag-sm">Scene / Prefab Integration</span>
-          <span class="tag-sm">Runtime Validation</span>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a href="https://drive.google.com/file/d/1ufzshyKzNC74L2bztAH6-T9frNZpjw-A/view" target="_blank" rel="noopener" class="project-link project-link-primary">
-            <i class="fa-solid fa-circle-play"></i> 시연 영상
-          </a>
-          <a href="https://github.com/park12347789/LastJumpCrew" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-brands fa-github"></i> GitHub 이력
-          </a>
-          <a href="https://docs.google.com/document/d/152Ets7DGVOP3v-psCz1HSkuWXKOWWLm8wOT2yWHbn74" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-solid fa-file-lines"></i> 개인 결과보고서
-          </a>
-        </div>
-        <p class="mt-4 text-xs text-gray-500"><i class="fa-solid fa-lock mr-1 text-teal"></i>팀 저장소 이력은 보존했으며, 소스는 공개 허가 전까지 비공개입니다.</p>
-      </div>
-    </article>
-
-    <!-- Project 4: Star Vanguard -->
-    <article id="star-vanguard" class="project-card project-card-reverse mt-10 scroll-mt-24" data-reveal>
-      <a href="playtests/star-vanguard-map1/" target="_blank" rel="noopener" class="project-media" aria-label="Star Vanguard Web Playtest 새 창에서 실행">
-        <img loading="lazy" decoding="async" src="images/portfolio/star-vanguard-map1-cover.png" alt="Star Vanguard Map 1 playtest cover">
-        <div class="project-media-overlay"></div>
-        <span class="project-media-action"><i class="fa-solid fa-gamepad"></i> Web Playtest</span>
-        <span class="project-tag-float">Godot · MVP13 Web Snapshot</span>
-      </a>
-      <div class="project-body">
-        <h3 class="font-display font-bold text-2xl text-white mb-2">Star Vanguard / Map 1 Playtest Field <span class="text-sm text-amber align-middle">MVP13 스냅샷</span></h3>
-        <p class="project-summary">
-          2026-07-05에 고정한, 웹에서 바로 플레이 가능한 Godot 우주 전투 루프 스냅샷.
-        </p>
-        <ul class="project-meta" aria-label="Star Vanguard 프로젝트 기본 정보">
-          <li><span>구성</span><strong>1인</strong></li>
-          <li><span>엔진</span><strong>Godot</strong></li>
-          <li><span>플랫폼</span><strong>Web</strong></li>
-          <li><span>상태</span><strong>MVP13 스냅샷</strong></li>
-        </ul>
-        <p class="text-gray-400 text-sm mb-5 leading-relaxed">
-          Godot 기반 우주 전투 플레이 테스트 필드의 MVP13 Web 빌드입니다. 이 스냅샷에서는 Map 1의 <span class="text-white">5회 출격 루프,
-          2/4번째 중간 보스, 최종 지휘함 전투</span>까지 확인할 수 있으며, 현재 원본 프로젝트의 최신 진행 구조와는 다를 수 있습니다.
-        </p>
-
-        <dl class="space-y-3 mb-5 text-sm">
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">역할</dt><dd class="text-gray-400">1인 개발 (전투 루프, 맵 선택 흐름, 무기/보상 진행, Web Export, 포트폴리오 배포)</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium leading-snug">문제→<br>판단</dt><dd class="text-gray-400">계속 바뀌는 개발본은 포트폴리오 재현성이 떨어짐 → 직접 플레이 가능한 MVP13 Web 빌드를 날짜와 함께 스냅샷으로 고정</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">구현</dt><dd class="text-gray-400">Map 1 출격 루프, 적 웨이브 압박, 무기 성장, 중간 보스 이벤트와 최종 보스 진입 구조</dd></div>
-          <div class="flex gap-3"><dt class="w-16 shrink-0 text-amber font-medium">검증</dt><dd class="text-gray-400">MVP13 Web Playtest 산출물, 당시 MapSelect/Main 흐름 스모크 테스트와 전투 검증 작업 기록</dd></div>
-        </dl>
-
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="tag-sm">Godot</span>
-          <span class="tag-sm">2026-07-05 Snapshot</span>
-          <span class="tag-sm">Web Playtest</span>
-          <span class="tag-sm">Map 1 Sortie Loop</span>
-          <span class="tag-sm">Weapon Progression</span>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a href="playtests/star-vanguard-map1/" target="_blank" rel="noopener" class="project-link project-link-primary">
-            <i class="fa-solid fa-gamepad"></i> Web Playtest
-          </a>
-          <a href="https://app.notion.com/p/394b9513108680799532c09360a1a7cd" target="_blank" rel="noopener" class="project-link">
-            <i class="fa-solid fa-file-lines"></i> Notion
-          </a>
-        </div>
-        <p class="mt-4 text-xs text-gray-500"><i class="fa-solid fa-keyboard mr-1 text-teal"></i>PC·키보드 권장 · 첫 실행은 Web 빌드 로딩 시간이 걸릴 수 있습니다.</p>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- ===================== ABOUT ===================== -->
-<section id="about" class="py-28 lg:py-36 relative border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid lg:grid-cols-12 gap-14 items-start">
-
-      <div class="lg:col-span-4" data-reveal>
-        <span class="section-eyebrow">About Me</span>
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3 mb-8">
-          잘 읽히는 화면부터<br>탐험의 여운까지
-        </h2>
-        <div class="relative w-48 h-48 lg:w-full lg:h-auto lg:aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-          <img loading="lazy" decoding="async" src="images/portfolio/hansol-about-portrait.png" alt="박한솔 프로필 이미지" class="block w-full h-full object-cover">
-        </div>
-        <p class="mt-6 text-sm text-gray-500 leading-relaxed">
-          <i class="fa-solid fa-location-dot text-amber mr-2"></i>광명시, South Korea<br>
-          <i class="fa-solid fa-graduation-cap text-amber mr-2"></i>남서울대학교 환경조형학과 (가상증강현실)
-        </p>
       </div>
 
-      <div class="lg:col-span-8 space-y-10" data-reveal>
-        <p class="text-gray-300 text-lg leading-loose">
-          <span class="text-white font-medium">무엇 하나 빠짐이 없도록, 제가 직접 큐레이팅해드리죠.</span>
-          처음엔 쉬워 보이고, 나중엔 빌드 깎게 만드는 게임을 좋아합니다.
-          직관적인 규칙, 잘 읽히는 화면 구성, 탐험할 이유가 있는 맵을 중요하게 생각합니다.
-          빠른 반응만 요구하기보다 플레이어가 선택하고 결과를 확인할 시간이 있는 게임을 지향합니다.
-        </p>
-
-        <div class="grid sm:grid-cols-2 gap-5">
-          <div class="feature-card">
-            <i class="fa-solid fa-chess-knight feature-icon"></i>
-            <h3 class="font-semibold text-white mb-1">생각할 틈이 있는 플레이</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">단순 반응보다 머리를 굴릴 수 있는 선택지, 빌드 판단, 탐험 동기를 가진 게임을 선호합니다.</p>
+      <article class="hero-media hud-frame" data-tilt>
+        <img src="assets/iron-vale-passage.jpg" alt="Iron Vale Passage 환경 컨셉아트" data-parallax>
+        <div class="media-notes" aria-hidden="true">
+          <span>MOOD / SHAPE</span>
+          <span>LIGHT / DEPTH</span>
+        </div>
+        <div class="media-overlay">
+          <span class="status-chip"><span class="status-dot"></span>VISUAL DEVELOPMENT</span>
+          <div>
+            <p>SELECTED ART / 01</p>
+            <h2>Iron Vale Passage</h2>
           </div>
-          <div class="feature-card">
-            <i class="fa-solid fa-face-smile feature-icon"></i>
-            <h3 class="font-semibold text-white mb-1">불쾌함보다 쾌적함</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">플레이어를 괴롭히기보다 읽기 쉽고 조작하기 좋은 흐름 안에서 즐거움을 주는 경험을 추구합니다.</p>
-          </div>
-          <div class="feature-card">
-            <i class="fa-solid fa-layer-group feature-icon"></i>
-            <h3 class="font-semibold text-white mb-1">하나씩 채워가는 완성도</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">처음부터 완벽한 게임보다, 핵심 루프를 세우고 내용을 하나하나 채우며 완성해가는 방식을 좋아합니다.</p>
-          </div>
-          <div class="feature-card">
-            <i class="fa-solid fa-dice-d20 feature-icon"></i>
-            <h3 class="font-semibold text-white mb-1">다양한 장르를 즐기는 감각</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">여러 장르의 게임을 즐겨왔고, 앞으로도 계속 즐기며 그 경험을 제 개발 언어로 옮겨가고자 합니다.</p>
-          </div>
+          <a class="fab" href="https://www.artstation.com/clrool" target="_blank" rel="noreferrer" aria-label="ArtStation에서 작품 보기">↗</a>
         </div>
+      </article>
+    </section>
 
-        <!-- Tech Stack -->
+    <section class="story-strip section-shell" aria-label="작업 방식">
+      <span class="story-index">ART PROCESS / 01—04</span>
+      <div class="story-words">
+        <span>관찰하고</span><span>형태를 찾고</span><span>색을 설계하고</span><span>세계로 구축합니다</span>
+      </div>
+    </section>
+
+    <section id="art" class="section-shell content-section" data-chapter="ART" aria-labelledby="art-title">
+      <div class="section-heading">
         <div>
-          <h3 class="text-xs tracking-[0.2em] uppercase text-gray-500 mb-4">Tech Stack</h3>
-          <div class="tech-grid">
-            <div class="tech-card">
-              <span>Engine</span>
-              <p>Unity 6, URP, URP 2D, Godot</p>
-            </div>
-            <div class="tech-card">
-              <span>Programming</span>
-              <p>C#, Input System, ScriptableObject</p>
-            </div>
-            <div class="tech-card">
-              <span>Gameplay</span>
-              <p>Enemy AI, AI Navigation, Combat Prototype, UI Flow</p>
-            </div>
-            <div class="tech-card">
-              <span>UI</span>
-              <p>uGUI, TextMesh Pro</p>
-            </div>
-            <div class="tech-card">
-              <span>Version Control</span>
-              <p>Git, GitHub, Unity Version Control</p>
-            </div>
-            <div class="tech-card">
-              <span>Art & Build</span>
-              <p>Photoshop, Background Concept Art, UI Art, Windows Build, Godot Web Export</p>
+          <p class="system-label">SELECTED / VISUAL DEVELOPMENT</p>
+          <h2 id="art-title">세계의 분위기를 설계합니다</h2>
+        </div>
+        <a class="button outlined small" href="https://www.artstation.com/clrool" target="_blank" rel="noreferrer">ArtStation 전체 보기 ↗</a>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-main"><img src="assets/iron-vale-passage.jpg" alt="Iron Vale Passage 콘셉트 아트" loading="lazy" data-parallax><figcaption><span>ENVIRONMENT</span>Iron Vale Passage</figcaption></figure>
+        <figure><img src="assets/erugo-tower.jpg" alt="Erugo Main Tower 콘셉트 아트" loading="lazy" data-parallax><figcaption><span>CONCEPT</span>Erugo Tower</figcaption></figure>
+        <figure><img src="assets/great-lake-corridor.jpg" alt="Great Lake Corridor 배경원화" loading="lazy" data-parallax><figcaption><span>ENVIRONMENT</span>Great Lake</figcaption></figure>
+        <figure><img src="assets/city-concept.jpg" alt="City Concept 배경원화" loading="lazy" data-parallax><figcaption><span>CONCEPT</span>City</figcaption></figure>
+        <figure><img src="assets/potion-shop.jpg" alt="Potion Shop 배경원화" loading="lazy" data-parallax><figcaption><span>ILLUSTRATION</span>Potion Shop</figcaption></figure>
+        <figure><img src="assets/pixel-ui-practice.jpg" alt="Pixel Art Game UI 연습" loading="lazy" data-parallax><figcaption><span>GAME UI</span>Pixel UI</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="projects" class="section-shell content-section" data-chapter="IN-ENGINE" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div>
+          <p class="system-label">IN-ENGINE / PLAYABLE WORK</p>
+          <h2 id="projects-title">아트를 플레이로 연결합니다</h2>
+        </div>
+        <p>컨셉과 UI가 실제 씬에서 어떻게 읽히고 반응하는지 플레이 가능한 결과로 검증했습니다.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card" data-tilt>
+          <div class="project-image compact">
+            <img src="assets/horrorstealth-cover.png" alt="HorrorStealth 탑다운 스텔스 호러 화면" loading="lazy" data-parallax>
+            <span class="index-badge">01</span>
+          </div>
+          <div class="project-body">
+            <div class="chip-row"><span class="chip active">Unity 6</span><span class="chip">1인 개발</span><span class="chip">Windows</span></div>
+            <h3>HorrorStealth</h3>
+            <p class="project-summary">어둠·소리·시야 정보를 분리해, 공포가 억울함이 되지 않도록 설계한 2D 스텔스 호러.</p>
+            <p class="proof-line"><strong>LIGHT / FOG</strong> Visual readability · Windows build</p>
+            <div class="card-actions">
+              <a class="button filled small" href="https://drive.google.com/file/d/1ZJtiHilNekt-S6KDYB1VOtts6FTvDL8l/view" target="_blank" rel="noreferrer">영상 보기</a>
+              <a class="text-button" href="https://github.com/park12347789/horrorescape" target="_blank" rel="noreferrer">GitHub ↗</a>
             </div>
           </div>
+        </article>
+
+        <article class="project-card" data-tilt>
+          <div class="project-image compact">
+            <img src="assets/last-jump-crew-cover.png" alt="Last Jump Crew 네트워크 튜토리얼 화면" loading="lazy" data-parallax>
+            <span class="index-badge">02</span>
+          </div>
+          <div class="project-body">
+            <div class="chip-row"><span class="chip active">Unity 6</span><span class="chip">5인 팀장</span></div>
+            <h3>Last Jump Crew</h3>
+            <p class="project-summary">4인 협동 로비·HUD·함선 지도·이동 도구를 서버 권위 상태로 연결.</p>
+            <p class="proof-line"><strong>HUD / MAP</strong> 4P co-op visual flow</p>
+            <div class="card-actions">
+              <a class="text-button" href="https://drive.google.com/file/d/1ufzshyKzNC74L2bztAH6-T9frNZpjw-A/view" target="_blank" rel="noreferrer">시연 영상 ↗</a>
+              <a class="text-button" href="https://github.com/park12347789/LastJumpCrew" target="_blank" rel="noreferrer">Git 이력 ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-tilt>
+          <div class="project-image compact">
+            <img src="assets/corridor-commander-cover.png" alt="Corridor Commander 디펜스 게임 화면" loading="lazy" data-parallax>
+            <span class="index-badge">03</span>
+          </div>
+          <div class="project-body">
+            <div class="chip-row"><span class="chip active">Unity 3D</span><span class="chip">2인 팀</span></div>
+            <h3>Corridor Commander</h3>
+            <p class="project-summary">설치·웨이브·보상·상점·게이트 확장을 하나의 진행 루프로 통합.</p>
+            <p class="proof-line"><strong>LOOP / FX</strong> Build · Upgrade · Reward feedback</p>
+            <div class="card-actions">
+              <a class="text-button" href="https://drive.google.com/file/d/1g5BktS-FwwfMZJzfutQscR3LngQAV8Jb/view" target="_blank" rel="noreferrer">게임플레이 ↗</a>
+              <a class="text-button" href="https://github.com/park12347789/Corridor_Commander" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card experimental-card" data-tilt>
+          <div class="project-image compact">
+            <img src="assets/star-vanguard-map1-cover.png" alt="Star Vanguard 우주 전투 화면" loading="lazy" data-parallax>
+            <span class="index-badge">04</span>
+          </div>
+          <div class="project-body">
+            <div class="chip-row"><span class="chip active">Godot</span><span class="chip">Web Playtest</span></div>
+            <h3>Star Vanguard</h3>
+            <p class="project-summary">5회 출격, 무기 성장, 중간 보스와 최종 지휘함까지 이어지는 웹 전투 스냅샷.</p>
+            <p class="proof-line"><strong>PIXEL UI</strong> Web playable visual prototype</p>
+            <div class="card-actions">
+              <a class="button filled small" href="https://park12347789.github.io/park-hansol-portfolio-pages/playtests/star-vanguard-map1/" target="_blank" rel="noreferrer">지금 플레이</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="proof" class="section-shell content-section" data-chapter="PROOF" aria-labelledby="proof-title">
+      <div class="section-heading compact-heading">
+        <div>
+          <p class="system-label">PLAYABLE / PROOF</p>
+          <h2 id="proof-title">아트를 구현으로 증명합니다</h2>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="proof-grid">
+        <article class="proof-card lime-card"><span>01</span><strong data-count="108" data-suffix="/108">108/108</strong><h3>EditMode Tests</h3><p>HorrorStealth 핵심 로직 검증</p></article>
+        <article class="proof-card"><span>02</span><strong data-count="221">221</strong><h3>Non-merge Commits</h3><p>Last Jump Crew 담당 이력</p></article>
+        <article class="proof-card"><span>03</span><strong data-count="0">0</strong><h3>Build Errors</h3><p>Corridor Commander 검증 빌드</p></article>
+      </div>
+    </section>
 
-<!-- ===================== CAREER TIMELINE ===================== -->
-<section id="career" class="py-28 lg:py-36 relative border-t border-white/5 bg-surface/40">
-  <div class="max-w-5xl mx-auto px-6 lg:px-10">
-    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
-      <span class="section-eyebrow justify-center">Career & Education</span>
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3">경력 및 이력</h2>
-    </div>
-
-    <div class="timeline">
-      <div class="timeline-item" data-reveal>
-        <span class="timeline-date">2025.03 – 2025.12</span>
-        <h3 class="timeline-title">배경원화 · 리듬게임 프로젝트</h3>
-        <ul class="timeline-list">
-          <li>리듬게임 플레이 화면에 들어가는 배경원화 제작 및 수정</li>
-          <li>노트, 판정선, 이펙트와 충돌하지 않도록 배경 명도·채도와 시선 흐름 조정</li>
-          <li>실제 게임 적용 기준에 맞춰 화면 분위기, 레이어, 완성도 유지</li>
-        </ul>
-        <div class="timeline-media">
-          <img loading="lazy" decoding="async" src="images/portfolio/career-sixtar-background.png" alt="Sixtar Gate: UNIVERSE 플레이 배경원화">
+    <section id="about" class="section-shell content-section about-section" data-chapter="ABOUT" aria-labelledby="about-title">
+      <div class="about-portrait hud-frame" data-tilt><img src="assets/hansol-about-portrait.png" alt="박한솔 프로필 사진" loading="lazy" data-parallax></div>
+      <div class="about-copy">
+        <p class="system-label">PROFILE / HANSOL PARK</p>
+        <h2 id="about-title">분위기를 그리고,<br>읽히는 플레이를 설계합니다.</h2>
+        <p>세계관의 키워드를 형태와 색으로 번역하고, 환경·UI·피드백을 통해 플레이어가 장면을 자연스럽게 읽도록 설계합니다. 엔진은 그 판단을 실제 플레이로 확인하는 도구입니다.</p>
+        <div class="skill-groups">
+          <div><span>VISUAL DEVELOPMENT</span><p>Concept · Mood · Shape Language</p></div>
+          <div><span>ENVIRONMENT</span><p>Worldbuilding · Lighting · Composition</p></div>
+          <div><span>GAME UI</span><p>Pixel Art · Information Flow · Feedback</p></div>
+          <div><span>IN-ENGINE</span><p>Unity 6 · URP · Godot · Prefab</p></div>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-item" data-reveal>
-        <span class="timeline-date">2025.02 – 2025.11</span>
-        <h3 class="timeline-title">게임 총괄 기획 · 디자인</h3>
-        <ul class="timeline-list">
-          <li>게임 총괄 기획, 게임 디자인, 인테리어 디자인 참여</li>
-          <li>이벤트 굿즈 기획 및 디자인</li>
-          <li>프로젝트 목적에 맞춰 콘셉트, 공간감, 시각 요소 정리</li>
-        </ul>
-        <div class="timeline-media">
-          <img loading="lazy" decoding="async" src="images/portfolio/career-planning-pixel.gif" alt="게임 기획과 디자인 픽셀 화면">
-        </div>
+    <section id="contact" class="section-shell contact-section" data-chapter="CONTACT" aria-labelledby="contact-title">
+      <p class="system-label">CONTACT / READY</p>
+      <h2 id="contact-title">다음 세계의 첫 장면을<br>함께 만들고 싶습니다.</h2>
+      <div class="contact-actions">
+        <a class="button filled" href="mailto:parkhansol011@gmail.com">이메일 보내기</a>
+        <a class="button outlined" href="https://github.com/park12347789" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a class="button outlined" href="https://www.artstation.com/clrool" target="_blank" rel="noreferrer">ArtStation ↗</a>
       </div>
+    </section>
+  </main>
 
-      <div class="timeline-item" data-reveal>
-        <span class="timeline-date">2023.07 – 2024.10</span>
-        <h3 class="timeline-title">3D 프랍 · 배경원화 · UI/UX · AI 시안 제작</h3>
-        <ul class="timeline-list">
-          <li>3D 프랍, 배경원화, 아이콘, UI 제작</li>
-          <li>판타지풍 / 현대풍 배경 제작 경험</li>
-          <li>AI 기반 배경 이미지 시안, 이벤트 샘플 이미지, 배너 이미지 제작</li>
-          <li>빠른 시안 제작으로 분위기 후보를 넓히고 최종 방향 정리</li>
-        </ul>
-        <div class="timeline-media timeline-media-two">
-          <img loading="lazy" decoding="async" src="images/portfolio/career-dione-map.png" alt="배경원화 작업 이미지">
-          <img loading="lazy" decoding="async" class="timeline-media-contain" src="images/portfolio/career-finalquest-assets.png" alt="배경원화와 UI 리소스 시안">
-        </div>
-      </div>
-
-      <div class="timeline-item" data-reveal>
-        <span class="timeline-date">2022.07 – 2023.04</span>
-        <h3 class="timeline-title">3D 배경 콘셉트 · 원화 · 프랍 디자인</h3>
-        <ul class="timeline-list">
-          <li>3D 배경 콘셉트, 원화, 프랍 디자인</li>
-          <li>Unity 배치와 홍보팀 지원 업무</li>
-          <li>VR 환경용 대형 월드 개발·제작 참여</li>
-          <li>프로그래머와 3D 모델 구현 관점의 피드백을 주고받으며 디자인 수정</li>
-          <li>실제 구현 시 최적화 부담을 줄이고, 전체 아트 톤과 통일성을 유지하는 방향으로 조정</li>
-        </ul>
-        <div class="timeline-media timeline-media-two">
-          <img loading="lazy" decoding="async" src="images/portfolio/career-erugo-stigmata.jpg" alt="Memory of Stigmata 프로젝트 이미지">
-          <img loading="lazy" decoding="async" class="timeline-media-contain" src="images/portfolio/career-erugo-spaceship.jpg" alt="ERUGO WORLD 우주선 콘셉트 디자인">
-        </div>
-      </div>
-
-      <div class="timeline-item timeline-item-edu" data-reveal>
-        <span class="timeline-date">2014.03 – 2021.02</span>
-        <h3 class="timeline-title">남서울대학교</h3>
-        <ul class="timeline-list">
-          <li>환경조형학과 / 가상증강현실 · 학점 3.17 / 4.5</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item timeline-item-edu" data-reveal>
-        <span class="timeline-date">2012 – 2014</span>
-        <h3 class="timeline-title">광명고등학교 졸업</h3>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== ILLUSTRATION GALLERY ===================== -->
-<section id="illustration" class="py-28 lg:py-36 relative border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-14" data-reveal>
-      <div>
-        <span class="section-eyebrow">Illustration</span>
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3">배경원화 & 콘셉트 아트</h2>
-        <p class="text-gray-400 mt-4 max-w-xl">ArtStation에 게시한 작품 중 일부입니다. 판타지·SF·현대풍 배경, 소품, UI 아트를 폭넓게 다룹니다.</p>
-      </div>
-      <a href="https://www.artstation.com/clrool" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white text-sm font-medium hover:border-teal hover:text-teal transition-colors duration-300">
-        ArtStation 전체 보기 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-      </a>
-    </div>
-
-    <div class="gallery-grid">
-      <figure class="gallery-item col-span-2 row-span-2" data-full="images/portfolio/erugo-tower.jpg" data-title="이루고 메인 타워 (Erugo Main Tower)">
-        <img loading="lazy" decoding="async" src="images/portfolio/erugo-tower.jpg" alt="이루고 메인 타워 콘셉트 아트">
-        <figcaption>이루고 메인 타워<span>Erugo Main Tower</span></figcaption>
-      </figure>
-      <figure class="gallery-item" data-full="images/portfolio/iron-vale-passage.jpg" data-title="Iron Vale Passage - Gateway to Ruins">
-        <img loading="lazy" decoding="async" src="images/portfolio/iron-vale-passage.jpg" alt="Iron Vale Passage 콘셉트 아트">
-        <figcaption>Iron Vale Passage<span>Gateway to Ruins</span></figcaption>
-      </figure>
-      <figure class="gallery-item" data-full="images/portfolio/great-lake-corridor.jpg" data-title="Great Lake Corridor">
-        <img loading="lazy" decoding="async" src="images/portfolio/great-lake-corridor.jpg" alt="Great Lake Corridor 배경원화">
-        <figcaption>Great Lake Corridor</figcaption>
-      </figure>
-      <figure class="gallery-item" data-full="images/portfolio/corridor.jpg" data-title="Corridor">
-        <img loading="lazy" decoding="async" src="images/portfolio/corridor.jpg" alt="Corridor 배경원화">
-        <figcaption>Corridor</figcaption>
-      </figure>
-      <figure class="gallery-item" data-full="images/portfolio/city-concept.jpg" data-title="City Concept">
-        <img loading="lazy" decoding="async" src="images/portfolio/city-concept.jpg" alt="City Concept 배경원화">
-        <figcaption>City Concept</figcaption>
-      </figure>
-      <figure class="gallery-item col-span-2" data-full="images/portfolio/erugo-town.jpg" data-title="이루고 타운 (Erugo Town)">
-        <img loading="lazy" decoding="async" src="images/portfolio/erugo-town.jpg" alt="이루고 타운 콘셉트 아트">
-        <figcaption>이루고 타운<span>Erugo Town</span></figcaption>
-      </figure>
-      <figure class="gallery-item" data-full="images/portfolio/potion-shop.jpg" data-title="Potion Shop">
-        <img loading="lazy" decoding="async" src="images/portfolio/potion-shop.jpg" alt="Potion Shop 배경원화">
-        <figcaption>Potion Shop</figcaption>
-      </figure>
-      <figure class="gallery-item" data-full="images/portfolio/pixel-ui-practice.jpg" data-title="Pixel Art Game UI Practice">
-        <img loading="lazy" decoding="async" src="images/portfolio/pixel-ui-practice.jpg" alt="Pixel Art Game UI 연습">
-        <figcaption>Pixel Art UI Practice</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CONTACT ===================== -->
-<section id="contact" class="py-28 lg:py-36 relative border-t border-white/5 overflow-hidden">
-  <div class="hero-bg absolute inset-0 opacity-30"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg/90 to-bg"></div>
-
-  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center" data-reveal>
-    <span class="section-eyebrow justify-center">Contact</span>
-    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-3 mb-6">
-      함께 만들 다음 프로젝트를<br>기다리고 있습니다
-    </h2>
-    <p class="text-gray-400 mb-10 leading-relaxed">
-      Unity Gameplay, Enemy AI, 아트 기반 테크니컬 기획 관련 협업이나<br class="hidden sm:block">채용 문의는 아래 채널로 편하게 연락 주세요.
-    </p>
-
-    <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
-      <a href="https://mighty-triangle-fae.notion.site/393b95131086829eb3208145c1f6d12f" target="_blank" rel="noopener" class="contact-btn contact-btn-primary">
-        <i class="fa-solid fa-file-lines"></i> Notion 포트폴리오 보기
-      </a>
-      <a href="https://github.com/park12347789" target="_blank" rel="noopener" class="contact-btn">
-        <i class="fa-brands fa-github"></i> GitHub
-      </a>
-      <a href="https://www.artstation.com/clrool" target="_blank" rel="noopener" class="contact-btn">
-        <i class="fa-solid fa-palette"></i> ArtStation
-      </a>
-      <a href="mailto:parkhansol011@gmail.com" class="contact-btn">
-        <i class="fa-solid fa-envelope"></i> Email
-      </a>
-    </div>
-
-    <div class="text-sm text-gray-600">
-      <i class="fa-solid fa-location-dot text-amber mr-1"></i> 광명시, South Korea
-    </div>
-  </div>
-</section>
-
-<!-- ===================== LIGHTBOX ===================== -->
-<div id="lightbox" class="lightbox">
-  <button id="lightbox-close" class="lightbox-close" aria-label="닫기"><i class="fa-solid fa-xmark"></i></button>
-  <figure class="lightbox-content">
-    <img id="lightbox-img" alt="">
-    <figcaption id="lightbox-caption"></figcaption>
-  </figure>
-</div>
-
-<!-- ===================== FOOTER ===================== -->
-<footer class="py-10 border-t border-white/5 text-center">
-  <p class="text-gray-600 text-sm">
-    &copy; <span id="year"></span> HANSOL PARK. Built for portfolio purposes.
-  </p>
-</footer>
-
-<script src="js/main.js"></script>
+  <footer class="section-shell footer">
+    <span>© <span data-year></span> HANSOL PARK</span>
+    <span class="system-label">GAME ART / VISUAL DEVELOPMENT</span>
+  </footer>
 </body>
 </html>
