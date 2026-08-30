@@ -39,6 +39,7 @@ playtests/star-vanguard-map1/
 
 - GitHub: [Corridor_Commander](https://github.com/park12347789/Corridor_Commander)
 - GitHub: [horrorescape (HorrorStealth)](https://github.com/park12347789/horrorescape)
+- GitHub: [왜애앵 (Waeaeaeng)](https://github.com/park12347789/Waeaeaeng)
 - Web Playtest: [Star Vanguard Map 1 MVP13 스냅샷 (2026-07-05)](https://park12347789.github.io/park-hansol-portfolio-pages/playtests/star-vanguard-map1/)
 - ArtStation: [clrool (HANSOL PARK)](https://www.artstation.com/clrool)
 - Notion 이력서: [1인 개발 / Unity Gameplay](https://app.notion.com/p/1-Unity-Gameplay-944b95131086836993ff016b8f7fdc50)
