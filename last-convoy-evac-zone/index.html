@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>LAST CONVOY: EVAC ZONE</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="game"></div>
+
+  <div id="vignette"></div>
+  <div id="scanlines"></div>
+
+  <section id="startScreen" class="overlay visible">
+    <div class="hero-card">
+      <div class="eyebrow">TACTICAL SURVIVOR / WEB PROTOTYPE</div>
+      <h1>LAST CONVOY<br><span>EVAC ZONE</span></h1>
+      <p class="lede">전차를 중심으로 분대를 이끌고 폐허가 된 도시의 생존자를 구출하십시오. 주요 시설을 확보하면 구조 신호가 송출되고, 도시 전체의 좀비가 몰려듭니다.</p>
+      <div class="loadout-title">STARTING COLUMN</div>
+      <div id="loadoutCards" class="loadout-grid"></div>
+      <div class="start-footer">
+        <div class="keys"><b>WASD</b> 이동 · <b>SHIFT</b> 전술 가속 · <b>SPACE</b> 집결/전개 · 자동 사격</div>
+        <button id="startBtn" class="primary">작전 개시</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="upgradeScreen" class="overlay upgrade-overlay">
+    <div class="upgrade-panel">
+      <div class="eyebrow">FIELD REQUISITION</div>
+      <h2>보급품 선택</h2>
+      <p>확보한 보급품으로 기갑·분대·지원 자산을 강화합니다.</p>
+      <div id="upgradeCards" class="upgrade-grid"></div>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="overlay">
+    <div class="result-card">
+      <div class="eyebrow">OPERATION REPORT</div>
+      <h2>EVAC COMPLETE</h2>
+      <div id="resultBody"></div>
+      <button id="restartBtn" class="primary">다시 출동</button>
+    </div>
+  </section>
+
+  <header id="hudTop" class="hud hidden">
+    <div class="brand">LAST CONVOY <span>// EVAC ZONE</span></div>
+    <div class="mission-chip" id="missionText">도시 수색 중</div>
+    <div class="threat-wrap"><span>THREAT</span><div class="threat-track"><i id="threatBar"></i></div><b id="threatLabel">1</b></div>
+  </header>
+
+  <aside id="hudLeft" class="hud panel hidden">
+    <div class="stat-row"><span>CIVILIANS</span><b id="civilianStat">0</b></div>
+    <div class="stat-row"><span>SQUAD</span><b id="squadStat">0 / 0</b></div>
+    <div class="stat-row"><span>ARMOR</span><b id="armorStat">1</b></div>
+    <div class="stat-row"><span>SUPPLY</span><b id="supplyStat">0</b></div>
+    <div class="divider"></div>
+    <div class="small-label">FORMATION</div>
+    <div id="formationStat" class="formation">SPREAD</div>
+  </aside>
+
+  <aside id="objectivePanel" class="hud objective hidden">
+    <div class="small-label">ACTIVE OBJECTIVE</div>
+    <h3 id="objectiveTitle">생존자 탐색</h3>
+    <p id="objectiveDesc">도시를 수색해 민간인을 구조하십시오.</p>
+    <div id="objectiveTimer" class="objective-timer hidden">00:00</div>
+  </aside>
+
+  <div id="toastLayer"></div>
+  <div id="crosshair"><span></span></div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+    }
+  }
+  </script>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
