@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "project_id": "LCEZ",
+  "project_name": "LAST CONVOY: EVAC ZONE",
+  "reference": {
+    "repository": "park12347789/park-hansol-portfolio-pages",
+    "ref": "main",
+    "path_prefix": "last-convoy-evac-zone/",
+    "baseline_sha": "d5ee44709824d73c2d720628d372cbd2a855cd8e"
+  },
+  "production": null,
+  "production_status": "UNCONFIRMED",
+  "requested_cadence": {
+    "worker_active_checkpoint_minutes": 60,
+    "external_check_minutes": 60,
+    "review_on": ["new_source_sha", "new_evidence", "ready_or_blocked_transition"],
+    "no_change_notification": false
+  },
+  "requested_roles": {
+    "design_review": "GPT-6 High",
+    "implementation": "GPT-5.6 Luna Extra High",
+    "external_review": "ChatGPT"
+  },
+  "runtime_model_selection": "UNVERIFIED",
+  "worker_auto_push": "NOT_CONFIGURED",
+  "auto_merge": false,
+  "public_release_requires_user_approval": true
+}
